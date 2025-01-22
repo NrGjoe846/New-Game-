@@ -6,6 +6,7 @@ import AuthSystem from './components/AuthSystem';
 import Dashboard from './components/Dashboard';
 import ProfileDashboard from './components/profile/ProfileDashboard';
 import CompilerPage from './components/compiler/CompilerPage';
+import PythonFundamentals from './components/courses/PythonFundamentals';
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <CompilerPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/courses/python-fundamentals"
+            element={
+              <ProtectedRoute>
+                <PythonFundamentals />
               </ProtectedRoute>
             }
           />
