@@ -12,6 +12,7 @@ interface Course {
   progress: number;
   language: string;
   chapters: Chapter[];
+  path?: string; // Add path for course routing
 }
 
 interface Chapter {
@@ -32,6 +33,7 @@ const courses: Course[] = [
     xp: 1200,
     progress: 45,
     language: 'Python',
+    path: '/courses/python-fundamentals', // Add path for Python course
     chapters: [
       {
         id: 'py-ch1',
@@ -191,12 +193,21 @@ const ProgrammingCourses = () => {
                     <Star className="w-5 h-5 text-yellow-400" />
                     <span>{course.xp} XP</span>
                   </div>
-                  <Link
-                    to={`/course/${course.id}`}
-                    className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg transition-all duration-300"
-                  >
-                    Continue Learning
-                  </Link>
+                  {course.path ? (
+                    <Link
+                      to={course.path}
+                      className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg transition-all duration-300"
+                    >
+                      Continue Learning
+                    </Link>
+                  ) : (
+                    <button
+                      className="px-4 py-2 bg-gray-500/50 cursor-not-allowed rounded-lg"
+                      disabled
+                    >
+                      Coming Soon
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
